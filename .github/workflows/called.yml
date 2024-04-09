@@ -1,0 +1,21 @@
+name: Build Upon Trigger
+
+on:
+  repository_dispatch:
+    types: [ trigger-build ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Access data from Repo A (optional)
+      run: echo ${{ github.event.inputs.some-data }}
+
+    - name: Build steps
+      # Add your build steps here
+
+    - name: Build Successful
+      run: echo "Build Successful!"
+      if: always()
